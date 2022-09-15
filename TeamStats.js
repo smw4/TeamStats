@@ -21,17 +21,38 @@ const team = {
 		// STEP 6.
 		return this._games;
 	},
-	//STEP 7. NOT WORKING YET. Not throwing any error codes, but not appending "Sal Haroldino, 94 to the players list." Trying to let the computer know that the inputs for addPlayer should equate to the keys in _players
+	//STEP 7. NOT WORKING YET. Expected Outcome: append "Sal Haroldino, 94 to the players list.
+	//throwing any error codes
+	//Trying to let the computer know that inputs for constPlayer should equate to the keys in _players.
+	//"this" is aqua instead of purple.
+	//using 'team' doesn't help.
+	// "unexpected token '." ()line 31
+	//Might be working now that I've made const player an array instead of an object......
+
 	addPlayer(newFirstName, newLastName, newAge) {
-		newFirstName = this._players.firstName;
-		newLastName = this._players.lastName;
-		newAge = this._players.age;
-		//if newFirstName, newLastName === strings AND newAge === 'number'
-		return this._players.push(); //use the .push() method to add object to array
+		const player = {
+			/*My incorrect code
+			newFirstName : this.players.firstName,
+			newLastName : this.players.lastName,
+			newAge : this.players.age,
+			*/
+			firstName: newFirstName,
+			lastName: newLastName, //correct code from @10:42 https://youtu.be/wxk9WKidl48
+			age: newAge,
+			//if newFirstName, newLastName === strings AND newAge === 'number'
+		};
+		return this._players.push(player); //use the .push() method to add object to array. Notice that "player" is invoked here so that it is no longer greyed out on line 33
+	},
+	addGame(newOpponent, newTeamPoints, newOpponentPoints) {
+		const game = {
+			opponent: newOpponent,
+			teamPoint: newTeamPoints,
+			opponentPoints: newOpponentPoints,
+		};
+		return this._games.push(game); // notice that "game" is invoked here so that it is no longer greyed out on line 47
 	},
 };
-
 team.addPlayer('Sal', 'Haroldino', 94);
-
-console.log(team._players);
-console.log(team._games);
+team.addGame('Titans', 69, 14);
+console.log(team.players);
+console.log(team.games);
